@@ -9,6 +9,8 @@
     
     <meta name="author" content="Owen">
     
+    <meta name="description" content="ADT相关的一些东西一些基础的概念AF(Abstract Function)：抽象函数，它表示我们构造“实际”的数据所形成的空间R，到用户所实际关注以及使用的“抽象”的数据形成的空间A的一个映射函数。例子：我们可能考虑有用一个点集合V和一个边集合S来表示一张图G，那么我们考虑一个AF(V，S)=G。">
+    
     
     
     
@@ -72,8 +74,8 @@
       <a href="https://owencreeper.github.io" title="Owen">Owen</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-06-04T08:15:32.000Z" itemprop="datePublished">2021-06-04</time>
-    更新日期:<time datetime="2021-06-04T08:15:32.618Z" itemprop="dateModified">2021-06-04</time>
+    <time datetime="2021-06-04T08:14:04.000Z" itemprop="datePublished">2021-06-04</time>
+    更新日期:<time datetime="2021-07-06T02:10:21.816Z" itemprop="dateModified">2021-07-06</time>
     
   </p>
 </header>
@@ -82,12 +84,25 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ADT%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.</span> <span class="toc-text">ADT相关的一些东西</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">一些基础的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EADT%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">关于ADT中的方法分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E5%99%A8"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">生产器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E5%99%A8"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">观察器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E5%80%BC%E5%99%A8"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">变值器</span></a></li></ol></li></ol></li></ol></li></ol>
 		</div>
 		
-		  
+		<h1 id="ADT相关的一些东西"><a href="#ADT相关的一些东西" class="headerlink" title="ADT相关的一些东西"></a>ADT相关的一些东西</h1><h2 id="一些基础的概念"><a href="#一些基础的概念" class="headerlink" title="一些基础的概念"></a>一些基础的概念</h2><p>AF(Abstract Function)：抽象函数，它表示我们构造“实际”的数据所形成的空间R，到用户所实际关注以及使用的“抽象”的数据形成的空间A的一个映射函数。例子：我们可能考虑有用一个点集合V和一个边集合S来表示一张图G，那么我们考虑一个AF(V，S)=G。用户看到的是G一个图，以及它的很多操作；而实际上我们是用S、V去实现它的。</p>
+<p>RI(Representation Invariant)：表示不变量，考虑到我们的空间R不一定恰好与用户的空间A形成映射，即可能存在一些空间R中的元素，而A中没有与之对应的。或者我们可以理解成AF对R有一个作用域，而RI就表示了这样一个作用域。例子：还是拿上面的图举例，我们可能要求这个图没有自环，那么我们的RI可能就是S中的边没有起点终点相同的。</p>
+<p>Safety from rep exposure：防止表示泄露，这东西是指我们需要保护我们的“直接”内部表示不能被外界获取到。因为如果用户通过某种手段获取到了我们内部表示的索引，那么他们可能绕过我们对外设计的修改接口，直接对数据进行修改，而这个时候，我们将难以检查错误。举一个简单的例子：比如我设计一个集合ADT，这个ADT中的数据不能有重叠的，而我打算使用列表的形式来实现，并且设置RI为列表中没有重复的数据。而我需要在这个ADT中实现一个方法，返回这个ADT转化为列表的形式。一个自然的想法是将我们构造的列表直接返回，但是这样犯了表示泄露的问题：如果用户在拿到这个列表后，直接使用这个列表的方法对数据进行修改，那么会直接影响到我们的ADT，并且没有经过我们的检查——极有可能违反我们的RI。所以面对这种问题，我们需要进行防御性复制，在这个例子中我们可以新建立一份列表的Copy后返回。</p>
+<h2 id="关于ADT中的方法分类"><a href="#关于ADT中的方法分类" class="headerlink" title="关于ADT中的方法分类"></a>关于ADT中的方法分类</h2><p>​    我们可以简单地分成4类：Creators(构造器)、Producers(生产器)、Observers(观察器)、Mutators(变值器)。</p>
+<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><p>​    首先说构造器，它是用一些ADT需要的外部属性来构造一个ADT。这个一般是一个ADT实例化的开始，我们都会使用构造器来实例化一个ADT。我们可以用一种抽象的符号化方式来给出：$t^*\rightarrow T$。其中，t表示其他类型，T表示ADT的类型，星号指示出现0次或者多次。</p>
+<h4 id="生产器"><a href="#生产器" class="headerlink" title="生产器"></a>生产器</h4><p>​    然后是生产器，它是用一个旧的ADT类型来构造一个新的ADT类型。这类方法跟构造器很类似，只不过我们一般使用构造器来初始化一个空的、纯净的ADT；而生产器则不会这样做。一个使用生产器的例子是，我需要当前ADT实例的一部分，于是我调用它的生产器方法来拿到其中的一块。我们同样可以使用一种抽象的符号化方式来给出：$T+,t^*\rightarrow T$。其中$+$指示出现1次或者更多次。</p>
+<h4 id="观察器"><a href="#观察器" class="headerlink" title="观察器"></a>观察器</h4><p>​    观察器，它是用一个ADT类型来产出其他类型。这样说可能有点奇怪，换个说法就是，我们通过观察器来获取一个ADT的相关信息。这部分可以说是ADT中很重要的部分（其实每个部分都挺重要的），如果把ADT和用户之间的交互描述成：ADT-&gt;用户为输出，用户-&gt;ADT为输入，那么观察器基本上就是包括了所有的输出。还是使用抽象化的符号方式给出：$T+,t^*\rightarrow t$。</p>
+<h4 id="变值器"><a href="#变值器" class="headerlink" title="变值器"></a>变值器</h4><p>​    变值器，我们使用它来对一个ADT对象进行修改。显然，如果一个ADT是mutable的，那么它需要某种变值器来响应用户的输入；相反，如果一个ADT是immutable的，我们不允许它有变值器（并且需要很小心的保护它不被修改）。一种抽象化的符号方式表示为：$T+,t^*\rightarrow void|t|T$。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/软件构造/">软件构造</a><a href="/tags/ADT/">ADT</a>
+  </div>
 
 
 
@@ -120,7 +135,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ADT%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.</span> <span class="toc-text">ADT相关的一些东西</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">一些基础的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EADT%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">关于ADT中的方法分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E5%99%A8"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">生产器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E5%99%A8"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">观察器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E5%80%BC%E5%99%A8"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">变值器</span></a></li></ol></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -130,6 +145,17 @@
   
 
   
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/ADT/" title="ADT">ADT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/软件构造/" title="软件构造">软件构造<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
 
   <div class="rsspart">
 	<a href="" target="_blank" title="rss">RSS 订阅</a>
@@ -274,5 +300,20 @@ $(document).ready(function(){
 
 
 
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
