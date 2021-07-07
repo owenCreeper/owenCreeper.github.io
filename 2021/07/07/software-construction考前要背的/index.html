@@ -9,7 +9,12 @@
     
     <meta name="author" content="Owen">
     
-    <meta name="description" content="">
+    <meta name="description" content="关于GitGit储存发生变化的文件(而不是代码行)
+开发过程中的改变对应的指令:
+git add/mv/rm 将工作室的改变放到staging
+git commit 从staging放到本地库
+git commit -a 上面两个的综合
+git reset &amp;lt;file&amp;gt; staging回">
     
     
     
@@ -75,7 +80,7 @@
     </p>
   <p class="article-time">
     <time datetime="2021-07-07T12:38:44.000Z" itemprop="datePublished">2021-07-07</time>
-    更新日期:<time datetime="2021-07-07T13:33:52.994Z" itemprop="dateModified">2021-07-07</time>
+    更新日期:<time datetime="2021-07-07T14:01:44.827Z" itemprop="dateModified">2021-07-07</time>
     
   </p>
 </header>
@@ -84,10 +89,27 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EGit"><span class="toc-number">1.</span> <span class="toc-text">关于Git</span></a></li></ol>
 		</div>
 		
-		<p><img src="/.io//graph.png" alt></p>
+		<img src="/.io//graph.png">
+
+<h2 id="关于Git"><a href="#关于Git" class="headerlink" title="关于Git"></a>关于Git</h2><p>Git储存发生变化的文件(而不是代码行)</p>
+<p>开发过程中的改变对应的指令:</p>
+<p>git add/mv/rm 将工作室的改变放到staging</p>
+<p>git commit 从staging放到本地库</p>
+<p>git commit -a 上面两个的综合</p>
+<p>git reset &lt;file&gt; staging回退到工作室</p>
+<p>git reset &lt;commit&gt; 从本地库直接回退到工作室</p>
+<p>git push 从本地库上传到网络仓库</p>
+<p>git fetch 从网络仓库扒到本地库</p>
+<p>git diff 比对工作室和staging的文件</p>
+<p>git diff HEAD 比对工作室和本地库的文件</p>
+<p>git clone/pull 直接从网络仓库拉取到工作室</p>
+<p>分支更替的指令:</p>
+<p>git checkout -b xxx 从当前分支分出一个并切换</p>
+<p>git merge xxx 将当前分支与xxx合并</p>
+<p>git branch -d xxx 删除一个分支</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -128,7 +150,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EGit"><span class="toc-number">1.</span> <span class="toc-text">关于Git</span></a></li></ol>
   </div>
 
 <div id="asidepart">
