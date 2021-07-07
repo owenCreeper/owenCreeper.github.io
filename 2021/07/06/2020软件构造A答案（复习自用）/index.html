@@ -84,7 +84,7 @@ C；如果? ">
     </p>
   <p class="article-time">
     <time datetime="2021-07-06T14:07:31.000Z" itemprop="datePublished">2021-07-06</time>
-    更新日期:<time datetime="2021-07-07T04:09:42.334Z" itemprop="dateModified">2021-07-07</time>
+    更新日期:<time datetime="2021-07-07T06:34:08.163Z" itemprop="dateModified">2021-07-07</time>
     
   </p>
 </header>
@@ -114,7 +114,9 @@ C；如果? ">
 <li>C；其他三个明显能为客户端的使用带来方便，C选项只是为了防止表示泄露等问题</li>
 <li>？ 多线程不考</li>
 </ol>
-<h2 id="二、写代码"><a href="#二、写代码" class="headerlink" title="二、写代码"></a>二、写代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">(String credit)</span> </span>&#123;</span><br><span class="line">    String[] strs = credit.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    <span class="keyword">assert</span>(strs.length &gt; <span class="number">0</span> &amp;&amp; strs.length &lt; <span class="number">3</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Integer a = Integer.phaseInt(strs[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">assert</span>(a &gt;= <span class="number">0</span> &amp;&amp; a &lt;= <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span> (strs.length == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">assert</span>(a &lt; <span class="number">10</span>);</span><br><span class="line">            a = Integer.phaseInt(strs[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">assert</span>(a == <span class="number">5</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">assert</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、写代码"><a href="#二、写代码" class="headerlink" title="二、写代码"></a>二、写代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">(String credit)</span> </span>&#123;</span><br><span class="line">    String[] strs = credit.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    <span class="keyword">assert</span>(strs.length &gt; <span class="number">0</span> &amp;&amp; strs.length &lt; <span class="number">3</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">assert</span>(strs[<span class="number">0</span>].charAt(<span class="number">0</span>) &gt; <span class="string">&#x27;0&#x27;</span> &amp;&amp; strs[<span class="number">0</span>].charAt(<span class="number">0</span>) &lt;= <span class="string">&#x27;9&#x27;</span>);</span><br><span class="line">        Integer a = Integer.phaseInt(strs[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">assert</span>(a &gt;= <span class="number">0</span> &amp;&amp; a &lt;= <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span> (strs.length == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">assert</span>(a &lt; <span class="number">10</span>);</span><br><span class="line">            a = Integer.phaseInt(strs[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">assert</span>(a == <span class="number">5</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">assert</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个实现好像有点麻烦，下面提供一种正则的写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">(String credit)</span> </span>&#123;</span><br><span class="line">    Pattern p = Pattern.compile(<span class="string">&quot;^[0-9](\\.5)?$|^10$&quot;</span>);</span><br><span class="line">    Matcher m = p.matcher(credit);</span><br><span class="line">    <span class="keyword">assert</span>(m.find());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="三、分析ADT1"><a href="#三、分析ADT1" class="headerlink" title="三、分析ADT1"></a>三、分析ADT1</h2><h3 id="1、找出表示泄露"><a href="#1、找出表示泄露" class="headerlink" title="1、找出表示泄露"></a>1、找出表示泄露</h3><p>title和author都设置成了public，应该改成private类型变量</p>
 <p>getAllLines方法中，直接return了lines，会导致表示泄露；应该进行防御性复制，改成return new ArrayList&lt;Stirng&gt;(lines);</p>
 <h3 id="2、设计spec"><a href="#2、设计spec" class="headerlink" title="2、设计spec"></a>2、设计spec</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 该方法获取诗的第start行到第end行的文本。当start&gt;end时，返回一个空列表。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> start 表示从第几行开始</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> end 表示到第几行结束</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回一个字符串列表（当start&gt;end时返回空列表），按顺序包含了第start行到第end行的文本</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IndexOutOfBoundsException 如果start或end超出了行数的范围，并且start&lt;end，那么将抛出异常</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getSomeLines</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> <span class="keyword">throws</span> IndexOutOfBoundsException</span></span><br></pre></td></tr></table></figure>
@@ -173,6 +175,14 @@ C；如果? ">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2021/07/07/software-construction-2019A/" title="software-construction 2019A">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  software-construction 2019A</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2021/06/11/OPP/"  title="OPP">
@@ -208,9 +218,9 @@ C；如果? ">
 		
 			<li><a href="/tags/OPP/" title="OPP">OPP<sup>1</sup></a></li>
 		
-			<li><a href="/tags/答案/" title="答案">答案<sup>1</sup></a></li>
+			<li><a href="/tags/答案/" title="答案">答案<sup>2</sup></a></li>
 		
-			<li><a href="/tags/软件构造/" title="软件构造">软件构造<sup>3</sup></a></li>
+			<li><a href="/tags/软件构造/" title="软件构造">软件构造<sup>4</sup></a></li>
 		
 		</ul>
 </div>

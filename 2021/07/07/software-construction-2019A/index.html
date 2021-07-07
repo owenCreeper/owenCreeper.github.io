@@ -1,0 +1,358 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>software-construction 2019A | Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Owen">
+    
+    <meta name="description" content="单选题1、？ 一个表上的内容，考前背
+2、B；其他几个都是要跑起来的，Checkstyle静态检查，git commit是提交
+3、C；A选项因为它本身是mutable，所以final的只是引用；B是因为那个ADT可能是immutable的？不清楚，不在考试范围；D一个iterator显然不是imm">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:owencreeper.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/07/07/software-construction-2019A/" title="software-construction 2019A" itemprop="url">software-construction 2019A</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://owencreeper.github.io" title="Owen">Owen</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-07-07T04:11:52.000Z" itemprop="datePublished">2021-07-07</time>
+    更新日期:<time datetime="2021-07-07T12:30:34.006Z" itemprop="dateModified">2021-07-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%80%89%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">单选题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%86%E6%9E%90%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">设计分析题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">停车场管理系统</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h2 id="单选题"><a href="#单选题" class="headerlink" title="单选题"></a>单选题</h2><p>1、？ 一个表上的内容，考前背</p>
+<p>2、B；其他几个都是要跑起来的，Checkstyle静态检查，git commit是提交</p>
+<p>3、C；A选项因为它本身是mutable，所以final的只是引用；B是因为那个ADT可能是immutable的？不清楚，不在考试范围；D一个iterator显然不是immutable的；C选项没有保存下来对象的地址，所以改不了</p>
+<p>4、D；其他选项错得太离谱，D显然是对的</p>
+<p>5、C；如果方法A前置条件比B强，那么对于开发者来说需要考虑的程序</p>
+<p>6、D；A放宽了后置条件；B加强了前置条件；C是overload；D加强了后置条件没问题</p>
+<p>7、D；A的hashCode只是确定存放的域，还应该调用equals方法来判断；B这玩应自己写的，没必要所有都判断；C最极端的例子，equals实现的是行为等价性，而a和b具有观察等价性；D显然为真</p>
+<p>8、C；A程序跑起来的时候会忽略所有assert；B RuntimeException是可以被捕获的；D IllegalArgumentException是可以被捕获的；</p>
+<p>9、B；A这玩应可能在D类被捕获；C不一定需要有throws，因为可能是unchecked异常；D显然可能被捕获了，处理方式为打印栈信息</p>
+<p>10、B；A数量多啥都代表不了；C测试用例不能删；D无需写测试的肯定有问题</p>
+<p>11、B；这是啥啊，查了一下好像java8以后就没有perm区了……于是排除一下选B</p>
+<p>12、？ JVM不考，放弃</p>
+<p>13、B；泛型转化是在编译时进行的，运行不会影响到性能</p>
+<p>14、？ 多线程不考，弃疗</p>
+<p>15、 A StringBuilder是mutable的，所以是单线⚪；C应该是指向双线椭圆String(“c”)；D set指向HashSet是双线，但是因为HashSet是mutable的，所以指向外面的都是单线</p>
+<h2 id="设计分析题"><a href="#设计分析题" class="headerlink" title="设计分析题"></a>设计分析题</h2><h4 id="停车场管理系统"><a href="#停车场管理系统" class="headerlink" title="停车场管理系统"></a>停车场管理系统</h4><p>2 实现一个静态工厂方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用停车场名，车位数量来初始化一个停车场对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name 停车场的名字，不能为空</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> lotsNumber 停车位的数量，大于等于5的正整数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> lotsWidths int数组，存放每个停车位的宽度，大于150，其长度应该等于停车位的数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 一个空的停车场</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IllegalArgumentException 如果参数不正确，那么将抛出异常</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> ParkingField <span class="title">getEmptyParkingField</span><span class="params">(String name, <span class="keyword">int</span> lotsNumber, <span class="keyword">int</span>[] lotsWidths)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ConcreteParkingField(name, lotsNumber);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是具体类的构造函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ConcreteParkingField</span><span class="params">(String name, <span class="keyword">int</span> lotsNumber, <span class="keyword">int</span>[] lotsWidths)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (name == <span class="keyword">null</span> || name.equals(<span class="string">&quot;&quot;</span>) || lotsNumber &lt; <span class="number">5</span> || lotsWidths.length != lotsNumber)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;参数出现错误，请检查输入&quot;</span>);</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.lotsNumber = lotsNumber;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lotsNumber; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (lotsWidths[i] &lt;= <span class="number">150</span>)</span><br><span class="line">        	<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;参数出现错误，请检查输入&quot;</span>);</span><br><span class="line">        lots.add(<span class="keyword">new</span> Lot(i, lotsWidths[i]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3 ConcreteParkingField类的RI和checkRep()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// name不能为空，长度大于0</span></span><br><span class="line"><span class="comment">// 车位数量至少为5</span></span><br><span class="line"><span class="comment">// lots集合中不同lot对象的编号不能相同</span></span><br><span class="line"><span class="comment">// status中key和value的值均不能为null</span></span><br></pre></td></tr></table></figure>
+<p>上面那点不知道意义何在，因为题目好像说得很清楚</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">checkRep</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">assert</span>(name != <span class="keyword">null</span> &amp;&amp; !name.equals(<span class="string">&quot;&quot;</span>));</span><br><span class="line">    <span class="keyword">assert</span>(lotsNumber &gt;= <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span> (Iterator&lt;Lot&gt; it = lots.iterator; it.hasNext(); ) &#123;</span><br><span class="line">        Iterator&lt;Lot&gt; nxt = it;</span><br><span class="line">        Lot lot = it.next();</span><br><span class="line">        <span class="keyword">while</span> (nxt.hasNext()) </span><br><span class="line">            <span class="keyword">assert</span>(nxt.next().getLotNumber != lot.getLotNumber);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">for</span> (Lot lot : status.keySet()) &#123;</span><br><span class="line">        <span class="keyword">assert</span>(lot != <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">assert</span>(status.get(lot) != <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4-1 (1) </p>
+<p>我们考虑设计一个抽象的装饰类ParkingFieldDecorator来实现接口；其中具体实现通过delegation给ConcreteParkingField类来实现，然后设计继承ParkingFieldDecorator的子类CompanyParkingField，子类增加一个final、private的company域（用于指示公司），在构造函数中使用参数进行初始化；在子类中重写parking方法和departure方法，并调用父类的相应方法，在开始和结束打印欢迎和告别信息。</p>
+<p>4-1 (2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParkingField pfWithCompany = <span class="keyword">new</span> CompanyParkingField(pf, <span class="string">&quot;HIT&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>5-1 (1) </p>
+<p>PF::=&lt;停车场名字,最大车位数,公司名字&gt;</p>
+<p>停车场名字::=Words</p>
+<p>停车场最大车位数::=Numbers</p>
+<p>公司名字::=Words|null</p>
+<p>Words::=Words Word|Word</p>
+<p>Word::=Word[0-9a-zA-Z]|[0-9a-zA-Z]</p>
+<p>Numbers::=Numbers[0-9]|[5-9]|[1-9][0-9]</p>
+<p>(2)</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">^</span>&lt;[0-9a-zA-Z]+( [0-9a-zA-Z]+)*,([5-9]|[1-9][0-9])[0-9]*,[0-9a-zA-Z]*( [0-9a-zA-Z]+)*&gt;<span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>6</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">parking</span><span class="params">(Car c, <span class="keyword">int</span> num)</span> <span class="keyword">throws</span> LotOccupiedException,NoSuchLotException,LotTooNarrowException,CarAlreadyParkingException</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (status().get(num) != <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> LotOccupiedException(num);</span><br><span class="line">    Lot lot = getLotByNumber(num);</span><br><span class="line">    <span class="keyword">if</span> (!lot.wideEnough(c))</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> LotTooNarrowException(c, num);</span><br><span class="line">    <span class="keyword">for</span> (Lot i : status().keySet) </span><br><span class="line">        <span class="keyword">if</span> (status().get(i).equals(c))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CarAlreadyParkingException(c);</span><br><span class="line">	status.put(lot, c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7 (1) 没有捕捉parking可能抛出的四个异常，应该使用try、catch进行处理；</p>
+<p>7 (2) 多线程不考，弃疗</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/软件构造/">软件构造</a><a href="/tags/答案/">答案</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://owencreeper.github.io/2021/07/07/software-construction-2019A/" data-title="software-construction 2019A | Hexo" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/07/06/2020软件构造A答案（复习自用）/"  title="2020软件构造A答案（复习自用）">
+ <strong>NEXT:</strong><br/> 
+ <span>2020软件构造A答案（复习自用）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E9%80%89%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">单选题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%86%E6%9E%90%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">设计分析题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">停车场管理系统</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/ADT/" title="ADT">ADT<sup>1</sup></a></li>
+		
+			<li><a href="/tags/OPP/" title="OPP">OPP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/答案/" title="答案">答案<sup>2</sup></a></li>
+		
+			<li><a href="/tags/软件构造/" title="软件构造">软件构造<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="https://owencreeper.github.io" target="_blank" title="Owen">Owen</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
